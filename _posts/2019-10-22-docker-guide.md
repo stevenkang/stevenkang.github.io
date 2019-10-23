@@ -2,7 +2,7 @@
 layout: post
 title:  "Docker 容器化服务笔记"
 date:   2019-10-22 09:14:00 +0800
-categories: default
+categories: default 推荐
 tags: Linux
 comments: 1
 ---
