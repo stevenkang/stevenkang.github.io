@@ -1,0 +1,121 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="viewport" content ="width=320,user-scalable=no" />
+    <meta name="applicable-device" content="mobile">
+    <title>表格字段&注释互转 Java Bean</title>
+    <style>
+        .main{text-align:center; margin-top:50px; font-family:'Microsoft YaHei';padding: 0px 5%;}
+        textarea{max-width: 45%;width: 600px;height:700px;float:left;}
+        .operate{width:5%;min-width:40px;float: left;margin-top: 10%;}
+    </style>
+</head>
+<body>
+<div class="main">
+    <h3>表格字段&注释互转 Java Bean</h3>
+    <textarea id="cont">
+userName	String	姓名
+mobile	String	手机号
+goldAccount	String	积存金账户
+bankAccount	String	电子户账户
+openGoldAccountTime	Date	积存金开户时间
+isFirstCard	Integer	主卡
+totalGram	BigDecimal	持有总克重
+availableGram	BigDecimal	可用克重
+frozenGram	BigDecimal	冻结克重
+buyUnConfirmAmount	BigDecimal	买在途资金
+redemptionUnConfirmAmount	BigDecimal	卖金在途金额
+</textarea>
+
+    <div class="operate">
+        <button onclick="transfer()">&gt;&gt;</button>
+        <button onclick="retransfer()">&lt;&lt;</button>
+    </div>
+    <textarea id="result">
+    /** 姓名 */
+    private String userName;
+
+    /** 手机号 */
+
+    private String mobile;
+    /***
+     * 积存金账户
+     */
+    private String goldAccount;
+
+    /***
+     * 电子户账户
+     */
+    private String bankAccount;
+    /** 积存金开户时间 */
+    private Date openGoldAccountTime;
+    /** 主卡 */
+    private Integer isFirstCard;
+
+    /** 持有总克重 */
+    private BigDecimal totalGram;
+    /** 可用克重 */
+    private BigDecimal availableGram;
+
+    /** 冻结克重 */
+    private BigDecimal frozenGram;
+    /** 买在途资金 */
+    private BigDecimal buyUnConfirmAmount;
+    /** 卖金在途金额 */
+    private BigDecimal redemptionUnConfirmAmount;
+    </textarea>
+</div>
+<script type="text/template" id="tpl">
+    /** {doc} */
+    private {type} {name};
+</script>
+<script>
+    function transfer() {
+        var cont = document.getElementById('cont').value
+        // 去掉多余字符
+        cont = cont.replace(/	/g, ' ').replace(/  /g, ' ').replace(/\n\n/g, '\n').replace(/;/g, '')
+        var html = new String()
+        for (line of cont.split("\n")){
+            if (line) {
+                var field = line.split(' ')
+                if (field.length >= 3) {
+                    // 去掉开始的多余换行符
+                    var tpl = document.getElementById('tpl').innerHTML.replace('\n    ', '    ')
+                    tpl = tpl.replace('{doc}', field[2])
+                    tpl = tpl.replace('{type}', field[1])
+                    tpl = tpl.replace('{name}', field[0])
+                    html += tpl
+                }
+            }
+        }
+        document.getElementById('result').value = html
+    }
+    function retransfer() {
+        var cont = document.getElementById('result').value
+        // 去掉多余字符
+        cont = cont.replace(/	/g, ' ').replace(/  /g, ' ').replace(/[\n]+/g, '\n').replace(/;/g, '')
+            .replace(/\*\n[ ]+/g, '*').replace(/\n[ ]+\*/g, ' *')
+        var fields = cont.split('\n');
+        var html = new String()
+        for (var i=0; i<fields.length-1; i+=2) {
+            var doc = fields[i+0].replace(/\/[\*]+[ ]*/, '').replace(/[ ]*[\*]+\//, '')
+            var field = fields[i+1].trim()
+            if (doc && field) {
+                var names = field.split(' ')
+                console.log(doc + ': ' + field + ' -> ' + names)
+                if (names.length >= 3) {
+                    html += (names[2].trim() + '\t' + names[1].trim() + '\t' + doc.trim() + '\n')
+                }
+            }
+        }
+        document.getElementById('cont').value = html
+    }
+</script>
+</body>
+</html>

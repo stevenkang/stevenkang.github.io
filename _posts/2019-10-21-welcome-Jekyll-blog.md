@@ -1,10 +1,9 @@
 ---
 layout: post
 title:  "欢迎使用 Jekyll 博客"
-date:   2019-10-21 18:00:00 +0800
-categories: example,demo
+categories: default
 ---
 
 
-欢迎使用
+欢迎使用{{page.date}}
 

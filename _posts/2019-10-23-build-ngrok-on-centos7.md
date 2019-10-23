@@ -3,7 +3,7 @@ layout: post
 title:  "CentOS 7 下搭建自己的 ngrok 内网穿透服务"
 date:   2019-10-23 09:56:00 +0800
 categories: default
-tags: ngrok linux CentOS
+tags: ngrok Linux CentOS
 comments: 1
 ---
 现在的家庭宽带或者部分公司的宽带都没有直接分配公网 IP ，这个给我们做开发调试时带来的很大的不便，比如我们需要对接微信公众号、支付宝等第三方系统时，第三方系统需要通过异步回调通知我们的服务，但是我们自己电脑上的应用程序都无法对外访问，这样也就通知不了，无法很好的进行联调测试。
