@@ -56,9 +56,9 @@ echo httpGet($siteUrl . $_GET['uri']);
  - [PHP: curl_setopt - Manual](https://www.php.net/manual/en/function.curl-setopt.php)
 
 # 版权
- > 版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）
- > 原创作者：10086@xiaoi.me 发表于 Xiaoi's Blog：[https://blog.xiaoi.me](https://blog.xiaoi.me)
- > 原文链接：{{site.url}}{{page.url}}
+> 版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）<br/>
+> 原创作者：10086@xiaoi.me 发表于 Xiaoi's Blog：[https://blog.xiaoi.me](https://blog.xiaoi.me)<br/>
+> 原文链接：{{site.url}}{{page.url}}<br/>
 
 扫码关注我，在线与我沟通、咨询
 ![Xiaoi's Blog](/assets/res/qrcode.png)
