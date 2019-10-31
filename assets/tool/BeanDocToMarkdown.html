@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="viewport" content ="width=320,user-scalable=no" />
+<meta name="applicable-device" content="mobile">
+<title>Java Bean 注释转换为 Markdown</title>
+<style>
+.main{text-align:center; margin-top:50px; font-family:'Microsoft YaHei';}
+textarea{width: 400px;height:700px;}
+button{top: -361px;position: relative;}
+</style>
+</head>
+<body>
+<div class="main">
+<h3>Java Bean 注释转换为 Markdown。</h3>
+<textarea id="cont">
+	/** 示例格式 */
+	private String message;
+	
+	/** 今日已预告 */
+	private BigDecimalEnum dayamount;
+	
+	/** 待发总额 */
+	private BigDecimal ygamount;
+	
+	/** 已发总额 */
+	private Date yfamount;
+
+	/** 已发总额 */
+	private Double yfamount;
+</textarea>
+<button onclick="transfer()">&gt;&gt;</button>
+<textarea id="result"></textarea>
+</div>
+<script>
+function transfer() {
+	var cont = document.getElementById("cont").value;
+	// 去掉多余字符
+	cont = cont.replace(/	/g,"").replace(/  /g,"").replace(/\n\n/g, "\n").replace(/;/g, "");
+	var fields = cont.split("\n");
+	var html = "";
+	for (var i=0; i<fields.length-1; i+=2) {
+		var doc = fields[i+0];
+		var field = fields[i+1];
+		doc = doc.replace(/\//g, "");
+		doc = doc.replace(/\*/g, "").replace(/ /g, "");
+		field = field.replace("private ", "");
+		if (field.indexOf("Enum ") != -1) {
+			doc += "，详见枚举：" + field.substr(0, field.indexOf("Enum ") + "Enum".length) + ".java";
+		}
+		
+		field = field.replace(/(String|Date|\w+Enum)/, "S");
+		field = field.replace("Boolean", "B");
+		field = field.replace(/(Integer|Long)/, "I");
+		field = field.replace(/(BigDecimal|Double|Float)/, "D");
+
+		console.log(field);
+		var fixField = field.split(" ");
+		field = fixField[1] + "\t" + fixField[0];
+		html += (" * " + field + "\t" + doc + "\n");
+	}
+	document.getElementById("result").value = html;
+}
+</script>
+</body>
+</html>
