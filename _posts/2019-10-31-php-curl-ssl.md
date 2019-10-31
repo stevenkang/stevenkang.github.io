@@ -47,14 +47,20 @@ echo httpGet($siteUrl . $_GET['uri']);
 ```
 通过使用以上的 PHP 代码即可完成基本的加速访问，原来使用 ```https://blog.xiaoi.me/a/b/c.html`` 访问的内容，
 可以通过 PHP 加速访问，例如：```proxy.php?uri=/a/b/c.html```
+
 # 总结
 低版本 SSL 协议安全性很低，建议将自己的网站等应用禁用低版本 SSL 协议，并且有类似本文这样的需求时，
 同时也将客户端的 SSL 协议版本提高，这样保证数据安全以及代码可用性。
+
 # 参考文献
  - [PHP: curl_setopt - Manual](https://www.php.net/manual/en/function.curl-setopt.php)
+
 # 版权
  > 版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）
-原创作者 10086@xiaoi.me 发表于 Xiaoi's Blog：[https://blog.xiaoi.me](https://blog.xiaoi.me)
+ > 原创作者：10086@xiaoi.me 发表于 Xiaoi's Blog：[https://blog.xiaoi.me](https://blog.xiaoi.me)
+ > 原文链接：{{site.url}}{{page.url}}
+
 扫码关注我，在线与我沟通、咨询
-![image](/assets/res/qrcode.png)
-**转载请保留原文链接以及版权信息**
+![Xiaoi's Blog](/assets/res/qrcode.png)
+
+***转载请保留原文链接以及版权信息***
