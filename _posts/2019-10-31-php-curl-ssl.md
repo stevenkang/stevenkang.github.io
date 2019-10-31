@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "PHP 使用 curl 访问获取 https 网站的内容"
-date:   2019-10-31 09:29:00 +0800
 categories: default 编程
 tags: php
 comments: 1
@@ -58,7 +57,7 @@ echo httpGet($siteUrl . $_GET['uri']);
 # 版权
 > 版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）<br/>
 > 原创作者：10086@xiaoi.me 发表于 Xiaoi's Blog：[https://blog.xiaoi.me](https://blog.xiaoi.me)<br/>
-> 原文链接：{{site.url}}{{page.url}}<br/>
+> 原文链接：[{{site.url}}{{page.url}}]({{site.url}}{{page.url}})<br/>
 
 扫码关注我，在线与我沟通、咨询
 ![Xiaoi's Blog](/assets/res/qrcode.png)
