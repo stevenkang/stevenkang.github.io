@@ -12,17 +12,17 @@ comments: 1
 
 
 # 安装和启用 docker
-
+```
 > yum install docker
 
 > systemctl enable docker.service
 
 > systemctl start docker.service
-
+```
 
 
 1、运行时时区设置问题：
-
+```
 FROM openjdk:8-jdk-alpine
 
 RUN apk add --no-cache tzdata
@@ -32,47 +32,47 @@ ENV TZ Asia/Shanghai
 
 
 RUN date -R
-
+```
 
 
 运行时字体加载失败：NPE at sun.awt.FontConfiguration.getVersion(FontConfiguration.java:1264)
-
+```
 RUN apk add --no-cache fontconfig
 
-
+```
 
 
 
 2、进入容器执行 bash 命令
 
 # container id 不用输全
-
+```
 docker exec -t -i {container id} /bin/bash
-
+```
 
 
 查询日志
-
+```
 docker logs 9573ada
-
+```
 
 
 服务的方式 docker 运行 nginx
-
+```
 sudo docker run --name my-nginx -p 80:80 -v /Users/stevenkang-mac/docker-nginx/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
-
+```
 
 
 # 打包镜像命令
-
+```
 mvn clean package docker:build -D maven.test.skip=true
-
+```
 
 
 # 打包并上传镜像
-
+```
 mvn clean package docker:build -DpushImage -D maven.test.skip=true
-
+```
 
 
 # docker-maven-plugin 无法推送时，清除 ~/.docker/config.json 中的 autos 配置信息后重拾
@@ -82,7 +82,7 @@ Failed to push registry
 
 
 # MySQL 容器化运行
-
+```
  > docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
 
  > docker run --rm --name mysql -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pwd -p 3306:3306 -d mysql:5.7
@@ -90,27 +90,27 @@ Failed to push registry
  > docker run --rm --name mysql -v /var/lib/mysql:/var/lib/mysql -p 3306:3306 -d mysql:5.6
 
  > sudo docker run --rm --name mysql -v /Users/stevenkang-mac/mysql:/var/lib/mysql -p 3306:3306 -m 256m --memory-swap=512m -d mysql:5.6
-
+```
 
 
 # Spring Config Server 容器化运行
-
+```
  > docker run —rm --name config-server -p 192.168.1.145:8888:8888 -v /etc/spring/config_server-application.yml:/application.yml -d springcloud/configserver
-
+```
 
 
 # Redis 容器化运行
-
+```
  > docker run --name redis -d redis:4-alpine
 
  > docker run --name redis -p 6379:6379 -d --rm redis --requirepass "password"
-
+```
 
 
 # Nginx 容器化运行
-
+```
  > docker run --name my-nginx -v /etc/nginx.conf:/etc/nginx/nginx.conf:ro -v /etc/nginx:/v-nginx -p 80:80 -p 443:443 --rm -d nginx
-
+```
 
 
 # 编译 kms 服务：Dockerfile
