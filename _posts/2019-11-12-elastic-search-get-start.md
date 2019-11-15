@@ -5,10 +5,8 @@ categories: 软件使用
 tags: Java elastic
 comments: 1
 ---
-
 Elasticsearch是一个基于Lucene库的搜索引擎。它提供了一个分布式、支持多租户的全文搜索引擎，具有HTTP Web接口和无模式JSON文档。Elasticsearch是用Java开发的，并在Apache许可证下作为开源软件发布。
-官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。[5]根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。 —— 维基百科
-
+官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。 —— 维基百科
 
 # 搭建 Elasticsearch 单节点以及简单的使用教程
 接下来介绍如何本地搭建一个单节点的 Elasticsearch 服务器以及进行一些增删改查的简单操作。
